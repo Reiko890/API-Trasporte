@@ -1,0 +1,408 @@
+{
+  "info": {
+    "_postman_id": "b758597c-aaae-4d98-a5c8-c15f408c2f11",
+    "name": "APITransporte",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58157664",
+    "_collection_link": "https://go.postman.co/collection/58157664-b758597c-aaae-4d98-a5c8-c15f408c2f11?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Driver",
+      "item": [
+        {
+          "name": "Crear un conductor",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{bearer_token_0fvq}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n     \"name\":\"Saul Ortiz\",\r\n     \"licenseNumber\":\"45455\",\r\n     \"active\":true\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/creaConductor",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "creaConductor"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Lista conductores",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{bearer_token_0nrh}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/listaDeConductores",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "listaDeConductores"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Order",
+      "item": [
+        {
+          "name": "Crear una nueva orden",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{bearer_token_0055}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n     \"status\":\"CREATED\",\r\n     \"origin\":\"CDMX\",\r\n     \"destination\":\"Oaxaca\",\r\n     \"createdAt\":\"2026-10-29T15:30:00\",\r\n     \"updatedAt\":\"2026-10-29T15:30:00\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/creaOrden",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "creaOrden"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Cambiar el estado de la orden",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{bearer_token_0055}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\":\"a2028751-e047-452b-85bf-650cb0c618e4\",\r\n     \"status\":\"IN_TRANSIT\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/cambiaEstadoOrden",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "cambiaEstadoOrden"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Consultar orden por ID.",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{bearer_token_0wmq}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/consultaOrdenId/71bc1083-9c7f-43ed-8c79-e91a4a03be6b",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "consultaOrdenId",
+                "71bc1083-9c7f-43ed-8c79-e91a4a03be6b"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Filtrado",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{bearer_token_0l6y}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/filtraOrden?fechaInicio=2026-10-28 15:30:00&fechaFin=2027-11-28 15:30:00",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "filtraOrden"
+              ],
+              "query": [
+                {
+                  "key": "destination",
+                  "value": "CDMX",
+                  "disabled": true
+                },
+                {
+                  "key": "fechaInicio",
+                  "value": "2026-10-28 15:30:00"
+                },
+                {
+                  "key": "fechaFin",
+                  "value": "2027-11-28 15:30:00"
+                },
+                {
+                  "key": "status",
+                  "value": "IN_TRANSIT",
+                  "disabled": true
+                },
+                {
+                  "key": "origin",
+                  "value": "Guadalajara",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Asignacion Ordenes",
+      "item": [
+        {
+          "name": "Asignacion",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{bearer_token_0fvq}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n     \"idOrder\":\"50054adc-f583-49b4-a7a9-c4604bcc13cb\",\r\n     \"idDriver\":\"556f6b71-36e0-4857-a38a-ec1af52b329e\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/asignacion",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "asignacion"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Subir Img",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{bearer_token_0fvq}}",
+                "description": "bearer "
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "imagen",
+                  "type": "file",
+                  "src": [
+                    "/C:/Users/DELL/Desktop/images.jpeg"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:8080/archivoImg?idDriver=556f6b71-36e0-4857-a38a-ec1af52b329e&idOrder=50054adc-f583-49b4-a7a9-c4604bcc13cb",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "archivoImg"
+              ],
+              "query": [
+                {
+                  "key": "idDriver",
+                  "value": "556f6b71-36e0-4857-a38a-ec1af52b329e"
+                },
+                {
+                  "key": "idOrder",
+                  "value": "50054adc-f583-49b4-a7a9-c4604bcc13cb"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Subir Pdf",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "pdf",
+                  "type": "file",
+                  "src": [
+                    "/C:/Users/DELL/Desktop/prueba.pdf"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:8080/archivoPdf?idDriver=517c7b56-4f6d-414e-909d-e056a07bc648&idOrder=2d5e4a07-69e5-45b0-8dce-523cf405f32a",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "archivoPdf"
+              ],
+              "query": [
+                {
+                  "key": "idDriver",
+                  "value": "517c7b56-4f6d-414e-909d-e056a07bc648"
+                },
+                {
+                  "key": "idOrder",
+                  "value": "2d5e4a07-69e5-45b0-8dce-523cf405f32a"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Autenticacion",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"admin@example.com\",\r\n    \"password\": \"password123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "bearer_token_01f2",
+      "secret": true
+    },
+    {
+      "key": "bearer_token_0wmq",
+      "secret": true
+    },
+    {
+      "key": "bearer_token_0l6y",
+      "secret": true
+    },
+    {
+      "key": "bearer_token_0055",
+      "secret": true
+    },
+    {
+      "key": "bearer_token_0nrh",
+      "secret": true
+    },
+    {
+      "key": "bearer_token_0pus",
+      "secret": true
+    },
+    {
+      "key": "bearer_token_0fvq",
+      "secret": true
+    }
+  ]
+}
