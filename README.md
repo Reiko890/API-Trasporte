@@ -1,6 +1,8 @@
 # API-Trasporte
 
 
+La documentacion de Swagger se encuentra en: http://localhost:8080/swagger-ui/index.htm
+
 Se incluye el archivo APITransporte.postman_collection.json con la coleccion de Postman para poder probar los servicios.
 
 De igual forma en este archivo se especifica la forma de consumir los servicios mediante portman:
