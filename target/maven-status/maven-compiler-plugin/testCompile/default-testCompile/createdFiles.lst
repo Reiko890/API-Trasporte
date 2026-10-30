@@ -1,0 +1,4 @@
+com\example\APITransporte\ApiTransporteApplicationTests.class
+com\example\APITransporte\controller\GestionConductoresControllerTest.class
+com\example\APITransporte\controller\AsignacionOrdenesControllerTest.class
+com\example\APITransporte\controller\GestionOrdenesControllerTest.class

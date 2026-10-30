@@ -12,6 +12,17 @@ services:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+  app:
+    build: .
+    container_name: api_transporte
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/bd_trnasporte?allowPublicKeyRetrieval=true&useSSL=false
+      - SPRING_DATASOURCE_USERNAME=usuario
+      - SPRING_DATASOURCE_PASSWORD=password123
 
 volumes:
   mysql_data:
