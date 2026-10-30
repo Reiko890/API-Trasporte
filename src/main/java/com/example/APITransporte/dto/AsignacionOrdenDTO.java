@@ -1,13 +1,9 @@
 package com.example.APITransporte.dto;
 
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.JdbcTypeCode;
-
-import java.sql.Types;
 import java.util.UUID;
 
 @Data

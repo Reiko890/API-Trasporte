@@ -1,14 +1,14 @@
 package com.example.APITransporte.repository;
 
-import com.example.APITransporte.dto.OrderDTO;
 import com.example.APITransporte.model.entity.OrderEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
 @Repository
-public interface OrderRepository extends JpaRepository<OrderEntity, UUID> {
+public interface OrderRepository extends JpaRepository<OrderEntity, UUID> , JpaSpecificationExecutor<OrderEntity> {
 
 
 }

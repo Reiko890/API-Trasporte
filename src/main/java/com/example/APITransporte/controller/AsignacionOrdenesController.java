@@ -1,10 +1,9 @@
 package com.example.APITransporte.controller;
 
 import com.example.APITransporte.dto.AsignacionOrdenDTO;
-import com.example.APITransporte.dto.DriverDTO;
 import com.example.APITransporte.model.entity.AsignacionOrdenEntity;
-import com.example.APITransporte.service.AlmacenamientoService;
-import com.example.APITransporte.service.AsignacionOrderService;
+import com.example.APITransporte.service.imp.AlmacenamientoService;
+import com.example.APITransporte.service.imp.AsignacionOrderServiceImp;
 import jakarta.validation.Valid;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,7 @@ import java.util.UUID;
 public class AsignacionOrdenesController {
 
     @Autowired
-    AsignacionOrderService asignacionOrderService;
+    AsignacionOrderServiceImp asignacionOrderServiceImp;
 
     @Autowired
     AlmacenamientoService almacenamientoService;
@@ -33,7 +32,7 @@ public class AsignacionOrdenesController {
     public AsignacionOrdenEntity asigConductorOrden(@Valid @RequestBody AsignacionOrdenDTO asignacionOrdenDTO){
         log.info("Asignacion recibida: " + asignacionOrdenDTO.toString());
 
-        return asignacionOrderService.creaAsignacionOrderService(asignacionOrdenDTO);
+        return asignacionOrderServiceImp.creaAsignacionOrderService(asignacionOrdenDTO);
     }
 
 
@@ -43,6 +42,7 @@ public class AsignacionOrdenesController {
     public ResponseEntity<String> subirArchivoPdf(@RequestParam("pdf") MultipartFile pdfFile,
                                                   @RequestParam UUID idDriver,
                                                   @RequestParam UUID idOrder){
+        log.info("Subiendo PDF ");
         try {
             almacenamientoService.guardarArchivo(pdfFile,idDriver,idOrder,"pdf");
             return ResponseEntity.status(HttpStatus.OK).body("PDF guardado correctamente.");
@@ -56,6 +56,7 @@ public class AsignacionOrdenesController {
     public ResponseEntity<String> subirArchivoImagen(@RequestParam("imagen") MultipartFile imagenFile,
                                                      @RequestParam UUID idDriver,
                                                      @RequestParam UUID idOrder) {
+        log.info("Subiendo Imagen ");
         try {
             almacenamientoService.guardarArchivo(imagenFile,idDriver,idOrder,"img");
             return ResponseEntity.status(HttpStatus.OK).body("Imagen guardada correctamente.");

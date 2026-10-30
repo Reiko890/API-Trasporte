@@ -1,6 +1,6 @@
 package com.example.APITransporte.config;
 
-import com.example.APITransporte.service.JwtService;
+import com.example.APITransporte.service.imp.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

@@ -11,6 +11,5 @@ import org.mapstruct.factory.Mappers;
 public interface OrderMapper {
     OrderMapper INSTANCE = Mappers.getMapper(OrderMapper.class);
 
-    // Convierte DTO a Entity
     OrderEntity toEntity(OrderDTO orderDTO);
 }

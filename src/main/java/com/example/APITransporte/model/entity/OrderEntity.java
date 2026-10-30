@@ -20,10 +20,10 @@ public class OrderEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @JdbcTypeCode(Types.BINARY) // Obliga a Hibernate a mapear el UUID como BINARY(16) en MySQL
+    @JdbcTypeCode(Types.BINARY)
     private UUID id;
     @Column
-    @Enumerated(EnumType.STRING) // Guarda el nombre del enum ("PENDING") en lugar de su índice numérico (0)
+    @Enumerated(EnumType.STRING)
     private Status status;
     @Column
     private String origin;

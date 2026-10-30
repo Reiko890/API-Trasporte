@@ -1,6 +1,6 @@
 package com.example.APITransporte.controller;
 
-import com.example.APITransporte.service.JwtService;
+import com.example.APITransporte.service.imp.JwtService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;

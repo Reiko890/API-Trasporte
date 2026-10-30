@@ -1,7 +1,8 @@
-package com.example.APITransporte.service;
+package com.example.APITransporte.service.imp;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +15,15 @@ import java.util.function.Function;
 @Service
 public class JwtService {
 
+    @Value("${jwt.secret}")
+    private String secret;
+
+
     // Secreto de ejemplo (Mínimo 256 bits). En producción, cárgalo desde application.properties
-    private static final String SECRET_KEY = "3c963655447a78617a3a6131312a32332f392f392f3f3f2f2d2d2d2d2d2d5c5c";
+   // private static final String SECRET_KEY = "3c963655447a78617a3a6131312a32332f392f392f3f3f2f2d2d2d2d2d2d5c5c";
 
     private SecretKey getSigningKey() {
-        return Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
+        return Keys.hmacShaKeyFor(secret.getBytes());
     }
 
     public String extractUsername(String token) {

@@ -1,4 +1,4 @@
-package com.example.APITransporte.service;
+package com.example.APITransporte.service.imp;
 
 import com.example.APITransporte.model.entity.AsignacionOrdenEntity;
 import com.example.APITransporte.repository.AsignacionOrderRepository;

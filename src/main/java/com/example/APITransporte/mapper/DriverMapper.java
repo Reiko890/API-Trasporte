@@ -10,6 +10,5 @@ public interface DriverMapper {
 
     DriverMapper INSTANCE = Mappers.getMapper(DriverMapper.class);
 
-    // Convierte DTO a Entity
     DriverEntity toEntity(DriverDTO driverDTO);
 }

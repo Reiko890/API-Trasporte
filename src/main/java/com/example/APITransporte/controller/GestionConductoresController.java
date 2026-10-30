@@ -2,7 +2,7 @@ package com.example.APITransporte.controller;
 
 import com.example.APITransporte.dto.DriverDTO;
 import com.example.APITransporte.model.entity.DriverEntity;
-import com.example.APITransporte.service.DriverService;
+import com.example.APITransporte.service.imp.DriverServiceImp;
 import jakarta.validation.Valid;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +18,14 @@ import java.util.List;
 public class GestionConductoresController {
 
     @Autowired
-    DriverService driverService;
+    DriverServiceImp driverServiceImp;
 
     //Crear un conductor
     @PostMapping("/creaConductor")
     public String creaConductor(@Valid @RequestBody DriverDTO driverDTO){
         log.info("Driver recibido: " + driverDTO.toString());
 
-        return driverService.creaDriver(driverDTO);
+        return driverServiceImp.creaDriver(driverDTO);
     }
 
 
@@ -34,7 +34,7 @@ public class GestionConductoresController {
     public List<DriverEntity> listaDeConductores(){
         log.info("Lista De Conductores ");
 
-        return driverService.getListaConductores();
+        return driverServiceImp.getListaConductores();
     }
 
 

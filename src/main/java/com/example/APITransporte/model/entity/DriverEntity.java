@@ -18,7 +18,7 @@ public class DriverEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @JdbcTypeCode(Types.BINARY) // Obliga a Hibernate a mapear el UUID como BINARY(16) en MySQL
+    @JdbcTypeCode(Types.BINARY)
      UUID id;
     @Column
      String name;

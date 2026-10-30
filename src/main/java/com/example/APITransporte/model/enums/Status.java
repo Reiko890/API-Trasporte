@@ -18,9 +18,8 @@ public enum Status {
         };
     }
 
-    // Método utilitario para validar el cambio
+
     public boolean puedeCambiarEstadoA(Status nextStatus) {
-        System.err.println("nextStatus:: "+nextStatus);
         return this.validaEstados().contains(nextStatus);
     }
 
